@@ -6,7 +6,15 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:ignore="ExtraText">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="132dp"
+        android:layout_height="132dp"
+        android:contentDescription="@string/gambar_hewan"
+        android:src="@drawable/ayam"/>
 
     <TextView
         android:id="@+id/nameTextView"
