@@ -19,8 +19,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun hitungBmi() {
-        val berat = binding.beratEditText.text.toString().toFloat()
-        val tinggi = binding.tinggiEditText.text.toString().toFloat() / 100
+        val berat = binding.beratBadanInp.text.toString().toFloat()
+        val tinggi = binding.tinggiBadanInp.text.toString().toFloat() / 100
         val bmi = berat / (tinggi * tinggi)
 
         val selectedId = binding.radioGroup.checkedRadioButtonId
