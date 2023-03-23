@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="angsa">Angsa</drawable>
+    <drawable name="ayam">Ayam</drawable>
+    <drawable name="bebek">Bebek</drawable>
+    <drawable name="domba">Domba</drawable>
+    <drawable name="kalkun">Kalkun</drawable>
+    <drawable name="kambing">Kambing</drawable>
+    <drawable name="kelinci">Kelinci</drawable>
+    <drawable name="kerbau">Kerbau</drawable>
+    <drawable name="kuda">Kuda</drawable>
+    <drawable name="sapi">Sapi</drawable>
+</resources>
