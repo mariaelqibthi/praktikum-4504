@@ -1,15 +1,20 @@
 package org.d3if3137.praktikum2
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mariaelqibthi.hitungbmi.model.HasilBmi
 import com.mariaelqibthi.hitungbmi.model.KategoriBmi
 
 class MainViewModel : ViewModel() {
-    internal fun hitungBmi(berat: Float, tinggi : Float, isMale: Boolean): HasilBmi {
+
+    private val hasilBmi = MutableLiveData<HasilBmi?>()
+    internal fun hitungBmi(berat: Float, tinggi : Float, isMale: Boolean) {
         val tinggiCm = tinggi / 100
         val bmi = berat / (tinggiCm * tinggiCm)
         val kategori = getKategori(bmi, isMale)
-        return HasilBmi(bmi, kategori)
+
+        hasilBmi.value = HasilBmi(bmi, kategori)
     }
 
     private fun getKategori(bmi: Float, isMale: Boolean): KategoriBmi {
@@ -28,4 +33,6 @@ class MainViewModel : ViewModel() {
         }
         return kategori
     }
+
+    fun getHasilBmi(): LiveData<HasilBmi?> = hasilBmi
 }

@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.mariaelqibthi.hitungbmi.model.HasilBmi
 import com.mariaelqibthi.hitungbmi.model.KategoriBmi
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -22,18 +23,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.button.setOnClickListener{ hitungBmi()}
+        viewModel.getHasilBmi().observe(this, {showResult(it)})
     }
 
     private fun hitungBmi() {
         val berat = binding.beratBadanInp.text.toString().toFloat()
         val tinggi = binding.tinggiBadanInp.text.toString().toFloat()
         val selectedId = binding.radioGroup.checkedRadioButtonId
-        val result = viewModel.hitungBmi(
+        viewModel.hitungBmi(
             berat.toFloat(),
             tinggi.toFloat(),
             selectedId == R.id.priaRadioButton
         )
-        showResult(result)
     }
 
     private fun getKategori(bmi: Float, isMale: Boolean): KategoriBmi {
@@ -69,7 +70,8 @@ class MainActivity : AppCompatActivity() {
         return HasilBmi(bmi, kategori)
     }
 
-    private fun showResult(result: HasilBmi){
+    private fun showResult(result: HasilBmi?){
+        if (result == null) return
         binding.bmiTextView.text = getString(R.string.bmi_x, result.bmi)
         binding.kategoriTextView.text = getString(R.string.kategori_x, getKategoriLabel(result.kategori))
     }
