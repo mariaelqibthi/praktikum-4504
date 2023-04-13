@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="org.d3if3137.hitungbmi.ui.SaranFragment"
     tools:context=".MainActivity"
+    android:name="org.d3if3137.hitungbmi.ui.SaranFragment"
     tools:viewBindingIgnore="true">
 
     <TextView
@@ -153,5 +153,14 @@
             android:layout_height="wrap_content"
             android:hint="@string/tinggi_badan" />
     </com.google.android.material.textfield.TextInputLayout>
-
+    
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/myNavHostFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
