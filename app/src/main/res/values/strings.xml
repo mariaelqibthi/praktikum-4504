@@ -16,4 +16,7 @@
     <string name="kategori_x">Kategori: %1$s</string>
     <string name="Kategori">Kategori: </string>
     <string name="BMI2">BMI: </string>
+    <string name="berat_invalid">Berat Invalid</string>
+    <string name="tinggi_invalid">Tinggi Invalid</string>
+    <string name="gender_invalid">Gender Invalid</string>
 </resources>

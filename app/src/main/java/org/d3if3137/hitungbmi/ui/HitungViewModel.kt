@@ -1,4 +1,4 @@
-package org.d3if3137.praktikum2
+package org.d3if3137.hitungbmi.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

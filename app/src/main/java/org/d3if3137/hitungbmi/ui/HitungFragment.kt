@@ -1,27 +1,36 @@
-package org.d3if3137.praktikum2
+package org.d3if3137.hitungbmi.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import org.d3if3137.praktikum2.databinding.ActivityMainBinding
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.mariaelqibthi.hitungbmi.model.HasilBmi
 import com.mariaelqibthi.hitungbmi.model.KategoriBmi
-import org.d3if3137.hitungbmi.ui.MainViewModel
+import org.d3if3137.praktikum2.R
+import org.d3if3137.praktikum2.databinding.FragmentHitungBinding
 
 
-class MainActivity : AppCompatActivity() {
+class HitungFragment : Fragment() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: FragmentHitungBinding
     private val viewModel: MainViewModel by lazy {
-        ViewModelProvider(this)[MainViewModel::class.java]
+        ViewModelProvider(requireActivity())[MainViewModel::class.java]
     }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
-        setContentView(R.layout.activity_main)
+        binding = FragmentHitungBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.button.setOnClickListener { hitungBmi() }
+        viewModel.getHasilBmi().observe(requireActivity(), { showResult(it) })
+        Toast.makeText(context, R.string.berat_invalid, Toast.LENGTH_LONG).show()
+        Toast.makeText(context, R.string.tinggi_invalid, Toast.LENGTH_LONG).show()
+        Toast.makeText(context, R.string.gender_invalid, Toast.LENGTH_LONG).show()
 
-        binding.button.setOnClickListener{ hitungBmi()}
-        viewModel.getHasilBmi().observe(this, {showResult(it)})
     }
 
     private fun hitungBmi() {
