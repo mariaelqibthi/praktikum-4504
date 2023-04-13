@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.mariaelqibthi.hitungbmi.model.HasilBmi
 import com.mariaelqibthi.hitungbmi.model.KategoriBmi
 import org.d3if3137.praktikum2.R
@@ -27,12 +29,14 @@ class HitungFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.button.setOnClickListener { hitungBmi() }
-        binding.saranButton.setOnClickListener {
-            it.findNavController().navigate(
-                R.id.action_hitungFragment_to_saranFragment
-            )
-        }
+        binding.saranButton.setOnClickListener { viewModel.mulaiNavigasi() }
         viewModel.getHasilBmi().observe(requireActivity(), { showResult(it) })
+        viewModel.getNavigasi().observe(viewLifecycleOwner, {
+            if (it == null) return@observe
+            findNavController().navigate(HitungFragmentDirections
+                .actionHitungFragmentToSaranFragment(it))
+            viewModel.selesaiNavigasi()
+        })
         Toast.makeText(context, R.string.berat_invalid, Toast.LENGTH_LONG).show()
         Toast.makeText(context, R.string.tinggi_invalid, Toast.LENGTH_LONG).show()
         Toast.makeText(context, R.string.gender_invalid, Toast.LENGTH_LONG).show()
