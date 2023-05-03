@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import org.d3if3137.praktikum2.databinding.ActivityMainBinding
 import android.util.Log
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() { //mod05
 
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
