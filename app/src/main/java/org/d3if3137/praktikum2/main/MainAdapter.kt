@@ -8,12 +8,23 @@ import org.d3if3137.praktikum2.Hewan
 import org.d3if3137.praktikum2.R
 import org.d3if3137.praktikum2.databinding.ListItemBinding
 
-class MainAdapter(private val data: List<Hewan>) :
-    RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+class MainAdapter :  RecyclerView.Adapter<MainAdapter.ViewHolder>(){
 
+    private lateinit var myAdapter: MainAdapter
+    private val data = mutableListOf<Hewan>()
+
+    fun updateData(newData: List<Hewan>) {
+        data.clear()
+        data.addAll(newData)
+        notifyDataSetChanged()
+    }
     class ViewHolder(
         private val binding: ListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+
+        private fun notifyDataSetChanged() {
+
+        }
 
         fun bind(hewan: Hewan) = with(binding){
             namaTextView.text = hewan.nama
