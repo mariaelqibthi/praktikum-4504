@@ -25,7 +25,7 @@ class HitungFragment : Fragment() { //mod4
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding.recycleView) {
             addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
-            adapter = MainAdapter(getData())
+            adapter = MainAdapter()
             setHasFixedSize(true)
         }
     }
