@@ -3,4 +3,5 @@
     <string name="message">%1$s diklik!</string>
     <string name="Angsa">angsa</string>
     <string name="Cygnus_olor">Cygnus olor</string>
+    <string name="koneksi_error">koneksi_error</string>
 </resources>

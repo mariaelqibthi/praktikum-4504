@@ -13,6 +13,7 @@ import org.d3if3137.praktikum2.network.HewanApi
 
 class MainViewModel : ViewModel() {
     private val data = MutableLiveData<List<Hewan>>()
+    private val status = MutableLiveData<HewanApi.ApiStatus>()
     init {
         retrieveData()
     }
@@ -27,4 +28,5 @@ class MainViewModel : ViewModel() {
         }
     }
     fun getData(): LiveData<List<Hewan>> = data
+    fun getStatus(): LiveData<HewanApi.ApiStatus> = status
 }

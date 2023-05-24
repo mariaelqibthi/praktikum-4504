@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import org.d3if3137.praktikum2.Hewan
 import org.d3if3137.praktikum2.R
 import org.d3if3137.praktikum2.databinding.FragmentMainBinding
+import org.d3if3137.praktikum2.network.HewanApi
 
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
@@ -23,7 +24,7 @@ class MainFragment : Fragment() {
         binding = FragmentMainBinding.inflate(layoutInflater, container, false)
         myAdapter = MainAdapter()
 
-        with(binding.recycleView) {
+        with(binding.recyclerView) {
             addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
             adapter = myAdapter
             setHasFixedSize(true)
@@ -35,6 +36,23 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getData().observe(viewLifecycleOwner) {
             myAdapter.updateData(it)
+        }
+        viewModel.getStatus().observe(viewLifecycleOwner) {
+            updateProgress(it)
+        }
+    }
+    private fun updateProgress(status: HewanApi.ApiStatus) {
+        when (status) {
+            HewanApi.ApiStatus.LOADING -> {
+                binding.progressBar.visibility = View.VISIBLE
+            }
+            HewanApi.ApiStatus.SUCCESS -> {
+                binding.progressBar.visibility = View.GONE
+            }
+            HewanApi.ApiStatus.FAILED -> {
+                binding.progressBar.visibility = View.GONE
+                binding.networkError.visibility = View.VISIBLE
+            }
         }
     }
 }
