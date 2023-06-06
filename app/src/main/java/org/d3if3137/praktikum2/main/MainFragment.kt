@@ -1,6 +1,7 @@
 package org.d3if3137.praktikum2.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,5 +55,21 @@ class MainFragment : Fragment() {
                 binding.networkError.visibility = View.VISIBLE
             }
         }
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.i("MainActivity", "onResume dijalankan")
+    }
+    override fun onPause() {
+        Log.i("MainActivity", "onPause dijalankan")
+        super.onPause()
+    }
+    override fun onStop() {
+        Log.i("MainActivity", "onStop dijalankan")
+        super.onStop()
+    }
+    override fun onDestroy() {
+        Log.i("MainActivity", "onDestroy dijalankan")
+        super.onDestroy()
     }
 }
