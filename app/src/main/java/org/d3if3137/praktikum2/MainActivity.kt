@@ -7,18 +7,22 @@ import android.util.Log
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import org.d3if3137.praktikum2.main.MainAdapter
+import org.d3if3137.praktikum2.util.MyTimer
 
 class MainActivity : AppCompatActivity() { //mod4
-
+    private lateinit var myTimer: MyTimer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        myTimer = MyTimer()
 
         Log.i("MainActivity", "onCreate dijalankan")
     }
 
     override fun onStart() {
         super.onStart()
+        myTimer.startTimer()
         Log.i("MainActivity", "onStart dijalankan")
     }
 
@@ -32,6 +36,7 @@ class MainActivity : AppCompatActivity() { //mod4
     }
     override fun onStop() {
         Log.i("MainActivity", "onStop dijalankan")
+        myTimer.stopTimer()
         super.onStop()
     }
     override fun onDestroy() {
